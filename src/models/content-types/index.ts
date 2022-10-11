@@ -6,3 +6,4 @@ export * from './author';
 export * from './post';
 export * from './cloudinary';
 export * from './shopify';
+export * from './extendedProduct';
