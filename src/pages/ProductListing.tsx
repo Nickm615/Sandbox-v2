@@ -1,10 +1,10 @@
 import { GetProducts } from "../utils/Query";
-import {Product} from '../models';
+import {Product, ExtendedProduct} from '../models';
 import {useEffect,useState} from 'react';
 
 
 export function ProductListing() {
-    const [data, setData] = useState<Product[] | undefined>();
+    const [data, setData] = useState<ExtendedProduct[] | undefined>();
     useEffect(() => {
       // GetProducts();
         const getData = async ()=>{
@@ -15,8 +15,6 @@ export function ProductListing() {
 
     },[]);
     if (data){
-      let shopify = JSON.parse(data[0].elements.shopify.value)
-      console.log(shopify)
       return (
         <div className="App">
           <header className="App-header">
@@ -24,8 +22,7 @@ export function ProductListing() {
               {(data.map((item)=>
               <div>
                 <h4>{item.elements.name.value}</h4>
-                <img className="product-image"src={shopify[0].previewUrl}/>
-                <p>{shopify[0].id}</p>
+                <img className="product-image"src={item.shopifyObject?.previewUrl}/>
 
               </div>
               ))}
