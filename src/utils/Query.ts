@@ -9,6 +9,7 @@ export async function GetProducts(){
   response.data.items.map((item: ExtendedProduct)=>{
     item.shopifyObject =  JSON.parse(item.elements.shopify.value).pop();
     arr.push(item)
+    return
 
   }
 

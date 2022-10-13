@@ -2,7 +2,7 @@ import {Product} from "./index"
 
 
 export interface ExtendedProduct extends Product{
-    shopifyObject?: {
+    shopifyObject: {
         handle: string;
         id: string;
         previewUrl: string;

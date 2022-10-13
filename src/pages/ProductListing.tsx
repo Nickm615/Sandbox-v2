@@ -1,6 +1,8 @@
 import { GetProducts } from "../utils/Query";
-import {Product, ExtendedProduct} from '../models';
+import {ExtendedProduct} from '../models';
 import {useEffect,useState} from 'react';
+import {ProductComponent} from '../components/Product';
+// import bikeLogo from '../media/bike-logo.png'
 
 
 export function ProductListing() {
@@ -16,18 +18,20 @@ export function ProductListing() {
     },[]);
     if (data){
       return (
-        <div className="App">
-          <header className="App-header">
-          <div>
+        
+        <div>
+          <header className='product-header'>
+            {/* <img src={bikeLogo}></img> */}
+            <h1>Vicious Cycle</h1>
+          </header>
+  
+          <div className="product-grid">
               {(data.map((item)=>
-              <div>
-                <h4>{item.elements.name.value}</h4>
-                <img className="product-image"src={item.shopifyObject?.previewUrl}/>
+              <ProductComponent  elements={item.elements} shopifyObject={item.shopifyObject} system={item.system}/>
 
-              </div>
+              
               ))}
           </div>
-          </header>
         </div>
       )
     
