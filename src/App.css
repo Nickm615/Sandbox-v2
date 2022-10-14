@@ -8,15 +8,17 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-
-
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.logo{
+  background-color: transparent;
+  width: 10%;
+  height: 10%;
+}
 
 .product-card{
   border: solid 2px antiquewhite ;
@@ -47,8 +49,10 @@
   display: block;
   background-color:rgb(123, 138, 123);
   width: 100%;
-  text-align: center;
   margin-bottom: 5%;
-  padding: 5px
+  padding: 5px;
+}
+.product-header h1{
+  margin: auto;
 }
 

@@ -1,17 +1,8 @@
-import {
-  DomElementOptionsType,
-  ResolversType,
-  RichTextElement,
-} from '@kontent-ai/react-components';
+import { DomElementOptionsType, ResolversType, RichTextElement } from '@kontent-ai/react-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import { resolveContentLink } from '../Utilities/ContentLinks';
-import {
-  ElementModels,
-  Elements,
-  IContentItem,
-  ILink,
-  IRichTextImage,
+import { ElementModels, Elements, IContentItem, ILink, IRichTextImage,
 } from '@kontent-ai/delivery-sdk';
 
 interface RichTextProps {
