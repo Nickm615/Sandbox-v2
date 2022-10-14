@@ -22,8 +22,13 @@
   border: solid 2px antiquewhite ;
   padding: 5px;
   margin: auto;
-  width: max-content;
+  width: 50%;
   justify-content: center;
+  font-size: 12px;
+  word-break: normal;
+}
+.product-description{
+  width:100%;
 }
 .product-img {
   max-width: 100%;
