@@ -13,7 +13,7 @@ export type Product = IContentItem<{
    * Id: 90ed52ef-1577-47e4-9195-7be8e2211c26
    * Codename: shopify
    */
-  shopify: Elements.CustomElement | any;
+  shopify: Elements.CustomElement;
 
   /**
    * Name (text)
