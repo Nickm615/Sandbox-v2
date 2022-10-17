@@ -19,25 +19,6 @@ export const RichText: React.FC<RichTextProps> = (props) => {
       const contentItemType = linkedItem ? linkedItem.system.type : '';
 
       switch (contentItemType) {
-        // case 'tweet': {
-        //   let tweetLink = linkedItem?.elements.tweetLink.value;
-        //   let tweetID = tweetLink.match('^.*twitter.com/.*/(\\d+)/?.*$')[1];
-
-        //   let selectedTheme = linkedItem?.elements.theme.value[0].codename;
-        //   selectedTheme = selectedTheme ? selectedTheme : 'light';
-
-        //   setTimeout(() => {
-        //     window.twttr.widgets.createTweet(
-        //       tweetID,
-        //       document.getElementById(`tweet${tweetID}`),
-        //       {
-        //         theme: selectedTheme,
-        //       }
-        //     );
-        //   }, 100);
-
-        //   return <div id={`tweet${tweetID}`}></div>;
-        // }
         case 'hosted_video': {
           if (
             linkedItem?.elements.videoHost.value.find(
