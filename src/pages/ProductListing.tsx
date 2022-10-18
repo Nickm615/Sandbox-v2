@@ -25,9 +25,9 @@ export function ProductListing() {
             <h1>Vicious Cycle</h1>
           </header>
           <h3>Popular products</h3>
-          <div className="product-grid">
+          <div className="product-field">
               {(data.map((item)=>
-              <ProductComponent  elements={item.elements} shopifyObject={item.shopifyObject} system={item.system}/>
+              <ProductComponent elements={item.elements} shopifyObject={item.shopifyObject} system={item.system}/>
 
               
               ))}

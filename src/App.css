@@ -23,7 +23,7 @@
 .product-card{
   border: solid 2px antiquewhite ;
   padding: 5px;
-  margin: auto;
+  margin: auto, 5px;
   width: 50%;
   justify-content: center;
   font-size: 12px;
@@ -37,13 +37,12 @@
   max-height: auto;
 }
 
-.product-grid{
+.product-field{
+  max-width: 1200px;
   margin: auto;
-  align-items: center;
-  justify-content: center;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 10px;
+  gap: 1rem;
+  justify-items: center;
 }
 .product-header{
   display: block;
@@ -55,4 +54,13 @@
 .product-header h1{
   margin: auto;
 }
+
+@media (min-width: 600px) {
+  .product-field { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .product-field { grid-template-columns: repeat(3, 1fr); }
+}
+
 
