@@ -3,6 +3,7 @@ import {ExtendedProduct} from '../models';
 import {useEffect,useState} from 'react';
 import {ProductComponent} from '../components/_product';
 import bikeLogo from '../media/bike-logo-2.png'
+import { ProductSearch } from "./ProductSearch";
 
 
 export function ProductListing() {
@@ -24,6 +25,7 @@ export function ProductListing() {
             <img className="logo" src={bikeLogo}></img>
             <h1>Vicious Cycle</h1>
           </header>
+          <ProductSearch/>
           <h3>Popular products</h3>
           <div className="product-field">
               {(data.map((item)=>
