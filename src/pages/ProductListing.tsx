@@ -29,7 +29,7 @@ export function ProductListing() {
           <h3>Popular products</h3>
           <div className="product-field">
               {(data.map((item)=>
-              <ProductComponent elements={item.elements} shopifyObject={item.shopifyObject} system={item.system}/>
+              <ProductComponent key={item.system.id}elements={item.elements} system={item.system} shopifyObject={item.shopifyObject}/>
 
               
               ))}
