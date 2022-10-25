@@ -6,29 +6,30 @@ import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-hooks-web';
 const searchClient = algoliasearch('VG5LKCBKWQ', '81312ba904fecad683207b552c988cb9');
 
 function Hit(hit: AlgoliaItem | any) {
-  console.log('hit')
+  console.log(hit)
   return (
 
     <div>{JSON.stringify(hit)}</div>
     // <ProductComponent></ProductComponent>
   );
 }
-function Search(){
-  console.log('search fire')
-  return (
-  <InstantSearch searchClient={searchClient} indexName="sandbox-index">
-    <Hits hitComponent={Hit}></Hits>
-  </InstantSearch>
-  )
+// function Search(){
+//   console.log('search fire')
+//   return (
+//   <InstantSearch searchClient={searchClient} indexName="sandbox-index">
+//     <Hits hitComponent={Hit}></Hits>
+//   </InstantSearch>
+//   )
 
 
   
-}
+// }
 
 export function ProductSearch() {
   return (
     <InstantSearch searchClient={searchClient} indexName="sandbox-index">
-      <SearchBox searchAsYouType={false} onSubmit={Search}/>
+      <SearchBox searchAsYouType={false}/>
+      <Hits hitComponent={Hit}></Hits>
     </InstantSearch>
 
   );
