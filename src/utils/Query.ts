@@ -15,7 +15,6 @@ export async function GetProducts(){
   }
 
     )
-    console.log(arr)
   return arr
     
 
