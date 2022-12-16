@@ -29,20 +29,51 @@ export const RichText: React.FC<RichTextProps> = (props: RichTextProps) => {
           )
           
         }
+        case 'video': {
+          if (
+            linkedItem?.elements.host.value.find(
+              (item: ElementModels.MultipleChoiceOption) =>
+                item.codename === 'vimeo'
+            )
+          ) {
+            return (
+              <iframe
+                className="hosted-video__wrapper"
+                src={linkedItem?.elements.source.value}
+                width="640"
+                height="360"
+                frameBorder="0"
+                allowFullScreen
+                title={`Vimeo video ${linkedItem.elements.title.value}`}
+              ></iframe>
+            );
+          } else if (
+            linkedItem?.elements.host.value.find(
+              (item: ElementModels.MultipleChoiceOption) =>
+                item.codename === 'youtube'
+            )
+          ) {
+            return (
+              <iframe
+                className="hosted-video__wrapper"
+                width="560"
+                height="315"
+                src={linkedItem?.elements.source.value}
+                frameBorder="0"
+                allowFullScreen
+                title={`Youtube video ${linkedItem.elements.title.value}`}
+              ></iframe>
+            );
+          } else {
+            return <div>Content item not supported</div>;
+          }
+        }
+
         
         default:
           return <div>Content item not supported</div>;
       }
     },
-    // resolveLink: (link: ILink, domOptions: DomElementOptionsType) => {
-    //   const path = resolveContentLink(link);
-
-    //   return (
-    //     <Link to={path}>
-    //       {domOptions.domToReact(domOptions.domElement.children)}
-    //     </Link>
-    //   );
-    // },
     resolveImage: (
       image: IRichTextImage,
       domOptions: DomElementOptionsType
@@ -60,7 +91,7 @@ export const RichText: React.FC<RichTextProps> = (props: RichTextProps) => {
           {domToReact(domElement.children)}
       </a>
   ),
-    resolveDomNode: undefined,
+  
   };
 
   return (
@@ -76,42 +107,3 @@ export default RichText;
 
 
 
-        // case 'hosted_video': {
-        //   if (
-        //     linkedItem?.elements.videoHost.value.find(
-        //       (item: ElementModels.MultipleChoiceOption) =>
-        //         item.codename === 'vimeo'
-        //     )
-        //   ) {
-        //     return (
-        //       <iframe
-        //         className="hosted-video__wrapper"
-        //         src={`https://player.vimeo.com/video/${linkedItem.elements.videoId.value}?title=0&byline=0&portrait=0`}
-        //         width="640"
-        //         height="360"
-        //         frameBorder="0"
-        //         allowFullScreen
-        //         title={`Vimeo video ${linkedItem.elements.videoId.value}`}
-        //       ></iframe>
-        //     );
-        //   } else if (
-        //     linkedItem?.elements.videoHost.value.find(
-        //       (item: ElementModels.MultipleChoiceOption) =>
-        //         item.codename === 'youtube'
-        //     )
-        //   ) {
-        //     return (
-        //       <iframe
-        //         className="hosted-video__wrapper"
-        //         width="560"
-        //         height="315"
-        //         src={`https://www.youtube.com/embed/${linkedItem.elements.videoId.value}`}
-        //         frameBorder="0"
-        //         allowFullScreen
-        //         title={`Youtube video ${linkedItem.elements.videoId.value}`}
-        //       ></iframe>
-        //     );
-        //   } else {
-        //     return <div>Content item not supported</div>;
-        //   }
-        // }
