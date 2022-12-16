@@ -9,10 +9,8 @@ import { ProductSearch } from "./ProductSearch";
 export function ProductListing() {
     const [data, setData] = useState<ExtendedProduct[] | undefined>();
     useEffect(() => {
-      // GetProducts();
         const getData = async ()=>{
         setData(await GetProducts());
-        // setIsLoaded(true);
         };
         getData();
 
@@ -26,14 +24,6 @@ export function ProductListing() {
             <h1>Vicious Cycle</h1>
           </header>
           <ProductSearch/>
-          {/* <h3>Popular products</h3>
-          <div className="product-field">
-              {(data.map((item)=>
-              <ProductComponent key={item.system.id}elements={item.elements} system={item.system} shopifyObject={item.shopifyObject}/>
-
-              
-              ))}
-          </div> */}
         </div>
       )
     
