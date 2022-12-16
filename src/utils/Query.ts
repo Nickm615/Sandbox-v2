@@ -1,5 +1,5 @@
 import {Client} from "./Client";
-import {Product, ExtendedProduct, ResolverType, RichText} from "../models";
+import {ExtendedProduct, Post} from "../models";
 import { Elements } from "@kontent-ai/delivery-sdk";
 import { parse } from 'node-html-parser';
 
@@ -19,14 +19,12 @@ export async function GetProducts(){
 }
 
 export async function GetRichTexts(){
-  let arr: Array<ResolverType>= [];
   const response = await Client
-  .items<RichText>()
-  .type('rich_text')
+  .item<Post>('example_post')
+  // .type('post')
   .toPromise();
-
-  const items = response.data.items;
+  const item = response.data.item;
   console.log('response',response)
-  return items
+  return item
 }
   
