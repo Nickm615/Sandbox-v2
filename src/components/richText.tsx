@@ -55,6 +55,11 @@ export const RichText: React.FC<RichTextProps> = (props: RichTextProps) => {
         />
       );
     },
+    resolveLink: (link, { domElement, domToReact }): JSX.Element => (
+      <a href={`/${link.type}/${link.urlSlug}`}>
+          {domToReact(domElement.children)}
+      </a>
+  ),
     resolveDomNode: undefined,
   };
 
