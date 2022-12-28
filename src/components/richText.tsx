@@ -1,5 +1,6 @@
 import { DomElementOptionsType, ResolversType, RichTextElement } from '@kontent-ai/react-components';
 import React from 'react';
+import parse from 'node-html-parser/dist/parse';
 import { Link } from 'react-router-dom';
 // import { resolveContentLink } from '../Utilities/ContentLinks';
 import { ElementModels, Elements, IContentItem, ILink, IRichTextImage,
@@ -10,7 +11,7 @@ interface RichTextProps {
   className?: string;
 }
 
-export const RichText: React.FC<RichTextProps> = (props) => {
+export const RichText: React.FC<RichTextProps> = (props: RichTextProps) => {
   const resolvers: ResolversType = {
     resolveLinkedItem: (
       linkedItem: IContentItem | undefined,
@@ -19,9 +20,19 @@ export const RichText: React.FC<RichTextProps> = (props) => {
       const contentItemType = linkedItem ? linkedItem.system.type : '';
 
       switch (contentItemType) {
-        case 'hosted_video': {
+        case 'author': {
+          return (
+            <div className='author-linked-item'>
+              <h4>{linkedItem?.elements.name.value}</h4>
+              <img src={linkedItem?.elements.image.value[0].url}/>
+              {/* {parse(linkedItem?.elements.bio.value)} */}
+            </div>
+          )
+          
+        }
+        case 'video': {
           if (
-            linkedItem?.elements.videoHost.value.find(
+            linkedItem?.elements.host.value.find(
               (item: ElementModels.MultipleChoiceOption) =>
                 item.codename === 'vimeo'
             )
@@ -29,16 +40,16 @@ export const RichText: React.FC<RichTextProps> = (props) => {
             return (
               <iframe
                 className="hosted-video__wrapper"
-                src={`https://player.vimeo.com/video/${linkedItem.elements.videoId.value}?title=0&byline=0&portrait=0`}
+                src={linkedItem?.elements.source.value}
                 width="640"
                 height="360"
                 frameBorder="0"
                 allowFullScreen
-                title={`Vimeo video ${linkedItem.elements.videoId.value}`}
+                title={`Vimeo video ${linkedItem.elements.title.value}`}
               ></iframe>
             );
           } else if (
-            linkedItem?.elements.videoHost.value.find(
+            linkedItem?.elements.host.value.find(
               (item: ElementModels.MultipleChoiceOption) =>
                 item.codename === 'youtube'
             )
@@ -48,29 +59,22 @@ export const RichText: React.FC<RichTextProps> = (props) => {
                 className="hosted-video__wrapper"
                 width="560"
                 height="315"
-                src={`https://www.youtube.com/embed/${linkedItem.elements.videoId.value}`}
+                src={linkedItem?.elements.source.value}
                 frameBorder="0"
                 allowFullScreen
-                title={`Youtube video ${linkedItem.elements.videoId.value}`}
+                title={`Youtube video ${linkedItem.elements.title.value}`}
               ></iframe>
             );
           } else {
             return <div>Content item not supported</div>;
           }
         }
+
+        
         default:
           return <div>Content item not supported</div>;
       }
     },
-    // resolveLink: (link: ILink, domOptions: DomElementOptionsType) => {
-    //   const path = resolveContentLink(link);
-
-    //   return (
-    //     <Link to={path}>
-    //       {domOptions.domToReact(domOptions.domElement.children)}
-    //     </Link>
-    //   );
-    // },
     resolveImage: (
       image: IRichTextImage,
       domOptions: DomElementOptionsType
@@ -83,7 +87,12 @@ export const RichText: React.FC<RichTextProps> = (props) => {
         />
       );
     },
-    resolveDomNode: undefined,
+    resolveLink: (link, { domElement, domToReact }): JSX.Element => (
+      <a href={`/${link.type}/${link.urlSlug}`}>
+          {domToReact(domElement.children)}
+      </a>
+  ),
+  
   };
 
   return (
@@ -94,3 +103,8 @@ export const RichText: React.FC<RichTextProps> = (props) => {
 };
 
 export default RichText;
+
+
+
+
+

@@ -1,13 +1,22 @@
 import './App.css';
-import { ProductListing } from './pages/ProductListing';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Home, ProductListing, ProductSearch, Translation, ResolverPage } from './pages';
 
 function App() {
-  return(
-    <div className='App'>
-      <ProductListing/>
+  return (
+    <Router>
+      <div className='App'>
+        <Routes>
+          <Route path='/' element={<Home/>} />
+          <Route path='/products' element={<ProductListing/>} />
+          <Route path='/translation' element={<Translation/>}/>
+          <Route path='/resolver' element={<ResolverPage/>}/>
+        </Routes>
 
-    </div>
-    
+      </div>
+
+    </Router>
+
   )
 }
 

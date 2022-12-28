@@ -27,6 +27,14 @@ export type Author = IContentItem<{
   games: Elements.TaxonomyElement<Games>;
 
   /**
+   * Image (asset)
+   * Required: false
+   * Id: bd98484a-d774-4501-80be-d02626772941
+   * Codename: image
+   */
+  image: Elements.AssetsElement;
+
+  /**
    * Name (text)
    * Required: false
    * Id: 33ade4c4-905c-4fbb-8084-3009604ebbe9

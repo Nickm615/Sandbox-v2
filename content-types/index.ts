@@ -7,4 +7,4 @@ export * from './rich_text';
 export * from './seller';
 export * from './shopify';
 export * from './trading_card';
-export * from './extendedProduct';
+export * from './video';
