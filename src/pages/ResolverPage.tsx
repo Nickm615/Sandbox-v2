@@ -1,6 +1,7 @@
 import { useEffect, useState  } from "react";
 import { GetRichTexts } from "../utils/Query";
-import { Post, RichText } from "../models";
+import { Post } from "../models";
+import { RichText } from "../components/richText";
 
 
 export function ResolverPage() {
@@ -11,11 +12,24 @@ export function ResolverPage() {
                 setData(await GetRichTexts());
             };
             getData();
+
         },[])
-    // const richTextElement = data.items[0].elements.
-    return(
-        <div>
-            <h2>resolver</h2>
-        </div>
-    )
+        if (data) {
+            console.log(data)
+            const richTextElement = data.elements.body_copy;
+            console.log(richTextElement)
+
+            return(
+                <RichText element={richTextElement}/>
+
+            )
+
+        }
+        else return(
+            <div>
+                <h1>NO DATA</h1>
+            </div>
+        )
+    
+
 }

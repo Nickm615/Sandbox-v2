@@ -1,5 +1,6 @@
 import { DomElementOptionsType, ResolversType, RichTextElement } from '@kontent-ai/react-components';
 import React from 'react';
+import parse from 'node-html-parser/dist/parse';
 import { Link } from 'react-router-dom';
 // import { resolveContentLink } from '../Utilities/ContentLinks';
 import { ElementModels, Elements, IContentItem, ILink, IRichTextImage,
@@ -24,7 +25,7 @@ export const RichText: React.FC<RichTextProps> = (props: RichTextProps) => {
             <div className='author-linked-item'>
               <h4>{linkedItem?.elements.name.value}</h4>
               <img src={linkedItem?.elements.image.value[0].url}/>
-              <p>{linkedItem?.elements.bio.value}</p>
+              {/* {parse(linkedItem?.elements.bio.value)} */}
             </div>
           )
           

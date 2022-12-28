@@ -23,8 +23,8 @@ export async function GetRichTexts(){
   .item<Post>('example_post')
   // .type('post')
   .toPromise();
-  const item = response.data.item;
-  console.log('response',response)
+  const item: Post = response.data.item;
+  console.log('item', item)
   return item
 }
   
